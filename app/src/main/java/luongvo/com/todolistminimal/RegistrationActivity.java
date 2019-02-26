@@ -17,13 +17,20 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class RegistrationActivity extends AppCompatActivity {
 
     //defining views
-    private EditText inputEmail, inputPassword;
-    private Button btnSignIn, btnSignUp, btnResetPassword;
-    private ProgressBar progressBar;
     private FirebaseAuth auth;
+
+    @BindView(R.id.sign_in_button) Button  btnSignIn;
+    @BindView(R.id.sign_up_button)Button   btnSignUp;
+    @BindView(R.id.email) EditText inputEmail;
+    @BindView(R.id.password) EditText inputPassword;
+    @BindView(R.id.btn_reset_password)Button btnResetPassword;
+    @BindView(R.id.progressBar) ProgressBar progressBar;
 
 
     @Override
@@ -35,12 +42,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         setTitle(" Registration ");
 
-        btnSignIn = (Button) findViewById(R.id.sign_in_button);
-        btnSignUp = (Button) findViewById(R.id.sign_up_button);
-        inputEmail = (EditText) findViewById(R.id.email);
-        inputPassword = (EditText) findViewById(R.id.password);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
+        ButterKnife.bind(this);
 
         btnResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override

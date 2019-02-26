@@ -10,5 +10,6 @@ public class AboutActivity extends AppCompatActivity {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+        setTitle(" About ");
     }
 }
