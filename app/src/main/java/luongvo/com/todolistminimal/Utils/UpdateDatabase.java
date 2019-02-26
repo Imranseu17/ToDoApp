@@ -139,11 +139,9 @@ public class UpdateDatabase {
 
             @Override
             protected Void doInBackground(Void... params) {
-                // delete all with done status = 1
-                String whereClause = TodoListContract.TodoListEntries.COLUMN_NAME_DONE + " = 1";
                 TodoListDbHelper mDbHelper = new TodoListDbHelper(context);
                 SQLiteDatabase db = mDbHelper.getWritableDatabase();
-                db.delete(TodoListContract.TodoListEntries.TABLE_NAME, whereClause, null);
+                db.delete(TodoListContract.TodoListEntries.TABLE_NAME, null, null);
                 return null;
             }
         }.execute();

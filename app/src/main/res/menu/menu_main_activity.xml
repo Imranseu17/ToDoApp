@@ -7,4 +7,8 @@
     <item android:id="@+id/clean_all_done"
           android:title="@string/clean_all_done"
           app:showAsAction="never"/>
+
+    <item android:id="@+id/logout"
+        android:title="Logout"
+        app:showAsAction="never"/>
 </menu>

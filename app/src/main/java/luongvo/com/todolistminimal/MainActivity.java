@@ -21,6 +21,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.astuetz.PagerSlidingTabStrip;
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private void initializeComponents() {
         updateDatabase = new UpdateDatabase();
         ButterKnife.bind(this);
+        setTitle(" ToDoAPP ");
         // set the pager adapter. More info look in 3rd party library document
         pager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager()));
         tabStrip.setViewPager(pager);
@@ -239,14 +241,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.about_menu_item:
+            case R.id.logout:
                 // start about activity
-                Intent intent = new Intent(this, AboutActivity.class);
-                startActivity(intent);
+               Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+               startActivity(intent);
                 return true;
             case R.id.clean_all_done:
                 // clean all done tasks then recreate activity
                 updateDatabase.removeAllDoneItem(MainActivity.this);
+                return true;
+
+            case R.id.about_menu_item:
+                // start about activity
+                Intent i = new Intent(this, AboutActivity.class);
+                startActivity(i);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
