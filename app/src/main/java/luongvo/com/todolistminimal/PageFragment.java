@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -17,14 +19,7 @@ import butterknife.ButterKnife;
 import luongvo.com.todolistminimal.Adapters.TodoListAdapter;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link PageFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link PageFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class PageFragment extends Fragment {
 
     @BindView(R.id.todoList) ListView todoList;
@@ -65,6 +60,7 @@ public class PageFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         // an adapter for the list view
         fragmentPagerAdapter = new TodoListAdapter(getActivity().getApplicationContext(), R.layout.todo_item, toDoItems);
+        Toast.makeText(getActivity(), "Total number of Items are:" +toDoItems.size()  , Toast.LENGTH_SHORT).show();
         todoList.setAdapter(fragmentPagerAdapter);
         todoList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             // open the detail of each item if clicked
@@ -79,7 +75,11 @@ public class PageFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+
+
     }
+
 
     @Override
     public void onResume() {

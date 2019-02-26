@@ -97,6 +97,8 @@ public class RegistrationActivity extends AppCompatActivity {
                                     Log.d("TAG", "onComplete: Failed=" + task.getException().getMessage());
 
                                 } else {
+                                    inputEmail.setText("");
+                                    inputPassword.setText("");
                                     startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
                                 }
                             }
