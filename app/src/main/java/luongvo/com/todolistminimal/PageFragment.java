@@ -13,6 +13,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,6 +28,7 @@ public class PageFragment extends Fragment {
 
     TodoListAdapter fragmentPagerAdapter;
     public static ArrayList<ToDoItem> toDoItems;
+    int count = 0;
 
     private static final String ARG_PAGE = "ARG_PAGE";
 
@@ -52,6 +55,7 @@ public class PageFragment extends Fragment {
         // inflate the tab view with these fragments
         View view = inflater.inflate(R.layout.fragment_page, container, false);
         ButterKnife.bind(this, view);
+
         return view;
     }
 
@@ -60,7 +64,13 @@ public class PageFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         // an adapter for the list view
         fragmentPagerAdapter = new TodoListAdapter(getActivity().getApplicationContext(), R.layout.todo_item, toDoItems);
-        Toast.makeText(getActivity(), "Total number of Items are:" +toDoItems.size()  , Toast.LENGTH_SHORT).show();
+        for (int i = 0; i < toDoItems.size(); i++){
+
+            count += 1;
+
+        }
+        Toast.makeText(getActivity(),"Total Number of list is: "+count,Toast.LENGTH_SHORT).show();
+
         todoList.setAdapter(fragmentPagerAdapter);
         todoList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             // open the detail of each item if clicked
@@ -75,6 +85,7 @@ public class PageFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
 
 
 
